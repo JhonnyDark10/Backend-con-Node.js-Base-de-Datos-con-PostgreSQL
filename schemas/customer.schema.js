@@ -12,12 +12,22 @@ const getCustomerSchema = Joi.object({
   id: id.required(),
 });
 
-const createCustomerSchema = Joi.object({
+/*const createCustomerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
   phone: phone.required(),
   userId:  userId.required()
+});*/
+const createCustomerSchema = Joi.object({
+  name: name.required(),
+  lastName: lastName.required(),
+  phone: phone.required(),
+ user: Joi.object({
+    email: email.required(),
+    password: password.required()
+  })
 });
+
 
 const updateCustomerSchema = Joi.object({
   name,

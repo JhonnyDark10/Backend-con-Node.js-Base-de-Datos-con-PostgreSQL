@@ -20,10 +20,18 @@ class CustomerService {
     return user;
   }
 
-  async create(data) {
+  /*async create(data) {
     const newCustomer = await models.Customer.create(data);
     return newCustomer;
+  }*/
+
+  async create(data) {
+    const newCustomer = await models.Customer.create(data, {
+      include: ['user']
+    });
+    return newCustomer;
   }
+
 
   async update(id, changes) {
     const model = await this.findOne(id);
